@@ -69,13 +69,9 @@ nav>ul>li{
     background-color: #f4f6ff;
     background-image: radial-gradient(#cbd5ff 1.5px, transparent 1.5px);
     background-size: 35px 35px;
-    transition: background-size 350ms ease;
     scroll-margin-top: 57px;
 }
 
-#home:hover{
-    background-size: 40px 40px;
-}
 body{
     height: 600vh;
     width: 100%;
@@ -611,6 +607,21 @@ ul>a{
     transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
+.assignment-link{
+    width: 100%;
+    min-height: 540px;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+}
+
+.assignment-link:focus-visible{
+    border-radius: inherit;
+    outline: 3px solid #254edb;
+    outline-offset: -4px;
+}
+
 .assignment-card:hover,
 .college-card:hover{
     transform: translateY(-6px);
@@ -627,11 +638,6 @@ ul>a{
         radial-gradient(circle, rgba(255, 255, 255, 0.22) 8px, transparent 8.5px);
     background-position: 0 0, 17px 17px;
     background-size: 34px 34px;
-    transition: background-size 400ms ease;
-}
-
-.assignment-card:hover .assignment-cover{
-    background-size: 42px 42px;
 }
 
 .assignment-cover i{
@@ -710,11 +716,6 @@ ul>a{
     inset: 0;
     border-radius: inherit;
     background: url("contact-background.jpe") center / cover;
-    transition: transform 400ms ease;
-}
-
-.contact:hover::before{
-    transform: scale(1.08);
 }
 
 .contact-overlay{
@@ -964,5 +965,71 @@ ul>a{
   right: -7%;
   bottom: 14%;
   color: #1e40d8;
+}
+
+[data-reveal] {
+    transition: opacity 650ms ease, translate 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+html.reveal-ready [data-reveal]:not(.is-visible) {
+    opacity: 0;
+    translate: 0 24px;
+}
+
+html.reveal-ready [data-reveal="left"]:not(.is-visible) {
+    translate: -28px 0;
+}
+
+html.reveal-ready [data-reveal="right"]:not(.is-visible) {
+    translate: 28px 0;
+}
+
+.skill-grid > [data-reveal],
+.assignment-grid > [data-reveal] {
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.skill-grid > [data-reveal]:nth-child(2),
+.assignment-grid > [data-reveal]:nth-child(2) {
+    --reveal-delay: 80ms;
+}
+
+.skill-grid > [data-reveal]:nth-child(3),
+.assignment-grid > [data-reveal]:nth-child(3) {
+    --reveal-delay: 160ms;
+}
+
+.skill-grid > [data-reveal]:nth-child(4),
+.assignment-grid > [data-reveal]:nth-child(4) {
+    --reveal-delay: 240ms;
+}
+
+.skill-grid > [data-reveal]:nth-child(5),
+.assignment-grid > [data-reveal]:nth-child(5) {
+    --reveal-delay: 320ms;
+}
+
+.skill-grid > [data-reveal]:nth-child(6),
+.assignment-grid > [data-reveal]:nth-child(6) {
+    --reveal-delay: 400ms;
+}
+
+.assignment-grid > [data-reveal]:nth-child(7) {
+    --reveal-delay: 480ms;
+}
+
+.assignment-grid > [data-reveal]:nth-child(8) {
+    --reveal-delay: 560ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        transition: none;
+    }
+
+    html.reveal-ready [data-reveal]:not(.is-visible) {
+        opacity: 1;
+        translate: none;
+    }
 }
 
